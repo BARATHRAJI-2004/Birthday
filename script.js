@@ -1,22 +1,21 @@
-function generateFireworks() {
-    const fireworksContainer = document.querySelector('.fireworks');
-    const colors = ['#f00', '#0f0', '#00f', '#ff0', '#0ff', '#f0f'];
-
-    setInterval(() => {
+document.addEventListener("DOMContentLoaded", function() {
+    function createFirework(x, y) {
         const firework = document.createElement('div');
         firework.classList.add('firework');
-        firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        firework.style.left = Math.random() * 100 + '%';
-        firework.style.animationDuration = Math.random() * 2 + 1 + 's';
-        fireworksContainer.appendChild(firework);
+        firework.style.left = `${x}px`;
+        firework.style.top = `${y}px`;
+        document.querySelector('.fireworks').appendChild(firework);
 
         setTimeout(() => {
             firework.remove();
-        }, 2000);
-    }, 800);
-}
+        }, 1500);
+    }
 
-
-window.onload = function() {
-    generateFireworks();
-};
+    document.addEventListener('click', (e) => {
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+                createFirework(e.pageX + (Math.random() - 0.5) * 200, e.pageY + (Math.random() - 0.5) * 200);
+            }, i * 200);
+        }
+    });
+});

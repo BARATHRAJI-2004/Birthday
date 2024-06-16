@@ -1,144 +1,139 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #000;
+    background-color: #1a1a1d;
     color: #fff;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
 }
 
 .container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.stars,
-.twinkling,
-.clouds {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: 1000px 1000px;
-}
-
-.stars {
-    background-image: url('https://www.transparenttextures.com/patterns/stars.png');
-    z-index: 1;
-    animation: moveStars 20s linear infinite;
-}
-
-.twinkling {
-    background-image: url('https://www.transparenttextures.com/patterns/twinkling.png');
-    z-index: 2;
-    animation: moveTwinkling 15s linear infinite;
-}
-
-.clouds {
-    background-image: url('https://www.transparenttextures.com/patterns/clouds.png');
-    z-index: 3;
-    animation: moveClouds 25s linear infinite;
-}
-
-@keyframes moveStars {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 1000px 1000px;
-    }
-}
-
-@keyframes moveTwinkling {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 1000px 1000px;
-    }
-}
-
-@keyframes moveClouds {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 1000px 1000px;
-    }
-}
-
-header {
-    text-align: center;
+h1 {
+    color: #ff6347;
+    font-size: 3em;
     margin-bottom: 20px;
 }
 
-.glow {
-    font-size: 3rem;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    animation: glowText 2s ease-in-out infinite alternate;
-}
-
-@keyframes glowText {
-    from {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    }
-    to {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.4);
-    }
-}
-
-.main {
+.cake {
     position: relative;
-    z-index: 10;
+    width: 200px;
+    margin: 0 auto;
 }
 
-.message {
-    text-align: center;
-    animation: slideIn 1s ease-out;
+.layer {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    margin: 5px 0;
 }
 
-.message p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
+.layer1 {
+    background-color: #ff1493;
+}
+
+.layer2 {
+    background-color: #ff69b4;
+}
+
+.layer3 {
+    background-color: #ffb6c1;
+}
+
+.candles {
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
+}
+
+.candle {
+    width: 10px;
+    height: 30px;
+    background-color: yellow;
+    margin: 0 5px;
+    position: relative;
+    animation: flicker 1s infinite;
+}
+
+.candle:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    animation: flame 1s infinite;
+}
+
+@keyframes flicker {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes flame {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .fireworks {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.friendship-lines {
+    margin-top: 30px;
+}
+
+.friendship-lines p {
+    font-size: 1.2em;
+    color: #fff;
 }
 
 .firework {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #f00;
     position: absolute;
-    animation: explode 2s ease-out infinite;
+    width: 3px;
+    height: 3px;
+    background: #ff6347;
+    border-radius: 50%;
+    animation: explode 1s ease-out forwards, move 1s ease-out forwards;
 }
 
 @keyframes explode {
-    from {
+    0% {
         transform: scale(1);
         opacity: 1;
     }
-    to {
-        transform: scale(20);
+    100% {
+        transform: scale(3);
         opacity: 0;
+    }
+}
+
+@keyframes move {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-200px);
     }
 }
