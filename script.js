@@ -18,4 +18,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }, i * 200);
         }
     });
+
+   
+    for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+            createFirework(window.innerWidth * Math.random(), window.innerHeight * Math.random());
+        }, i * 300);
+    }
 });
